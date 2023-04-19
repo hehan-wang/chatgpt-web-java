@@ -2,8 +2,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${MYSQL_USER_NAME:root}
-    password: ${MYSQL_PASSWORD:123456}
-    url: ${JDBC_URL:jdbc:mysql://localhost:3309/chat?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true}
+    password: ${MYSQL_PASSWORD:root}
+    url: ${JDBC_URL:jdbc:mysql://localhost:3306/chat?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true}
 
 #mybatis-plus:
 #  configuration:
@@ -12,9 +12,9 @@ spring:
 
 chat:
   # 访问密码
-  auth_secret_key: ${CHAT_AUTH_SECRET_KEY:}
+  auth_secret_key: ${CHAT_AUTH_SECRET_KEY:123}
   # OpenAI API Key - https://platform.openai.com/overview
-  openai_api_key: ${CHAT_OPENAI_API_KEY:}
+  openai_api_key: ${CHAT_OPENAI_API_KEY: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 }
   # change this to an `accessToken` extracted from the ChatGPT site's `https://chat.openai.com/api/auth/session` response
   openai_access_token: ${CHAT_OPENAI_ACCESS_TOKEN:}
   # OpenAI API Base URL - https://api.openai.com/，要加/后缀
@@ -28,7 +28,7 @@ chat:
   # HTTP 代理
   http_proxy_host: ${CHAT_HTTP_PROXY_HOST:127.0.0.1}
   # HTTP 代理
-  http_proxy_port: ${CHAT_HTTP_PROXY_PORT:}
+  http_proxy_port: ${CHAT_HTTP_PROXY_PORT:7890}
   # 管理端账号
   admin_account: ${CHAT_ADMIN_ACCOUNT:admin}
   # 管理端密码
@@ -44,7 +44,7 @@ chat:
   # ip 最大请求时间间隔（秒）
   ipMaxRequestSecond: ${CHAT_IP_MAX_REQUEST_SECOND:3600}
   # 限制上下文对话的数量
-  limitQuestionContextCount: ${CHAT_LIMIT_QUESTION_CONTEXT_COUNT:3}
+  limitQuestionContextCount: ${CHAT_LIMIT_QUESTION_CONTEXT_COUNT:5}
   # 是否展示余额，默认不展示
   isShowBalance: ${CHAT_IS_SHOW_BALANCE:false}
   # 是否展示管理端隐藏的消息，默认不展示
