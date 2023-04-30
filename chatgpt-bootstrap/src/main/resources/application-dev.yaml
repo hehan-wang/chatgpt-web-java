@@ -11,12 +11,13 @@ spring:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 chat:
-  # OpenAI API Key - https://platform.openai.com/overview
-  openai_api_key: ${CHAT_OPENAI_API_KEY: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}
+  # OpenAI API Key - https://platform.openai.com/account/api-keys
+  openai_api_key: ${CHAT_OPENAI_API_KEY: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}
   # change this to an `accessToken` extracted from the ChatGPT site's `https://chat.openai.com/api/auth/session` response
   openai_access_token: ${CHAT_OPENAI_ACCESS_TOKEN:}
   # OpenAI API Base URL - https://api.openai.com/，要加/后缀
   openai_api_base_url: ${CHAT_OPENAI_API_BASE_URL:https://api.openai.com/}
+#  openai_api_base_url: ${CHAT_OPENAI_API_BASE_URL:https://service-h4hg8dwm-1255528809.sg.apigw.tencentcs.com/}
   # API Model - https://platform.openai.com/docs/models apiKey 和 AccessToken mode 不一样
   openai_api_model: ${CHAT_OPENAI_API_MODEL:}
   # 反向代理地址 AccessToken 时使用
@@ -24,9 +25,9 @@ chat:
   # 超时毫秒
   timeout_ms: ${CHAT_TIMEOUT_MS:100000}
   # HTTP 代理
-  http_proxy_host: ${CHAT_HTTP_PROXY_HOST:}
+  http_proxy_host: ${CHAT_HTTP_PROXY_HOST:127.0.0.1}
   # HTTP 代理
-  http_proxy_port: ${CHAT_HTTP_PROXY_PORT:}
+  http_proxy_port: ${CHAT_HTTP_PROXY_PORT:7890}
   # 管理端账号
   admin_account: ${CHAT_ADMIN_ACCOUNT:admin}
   # 管理端密码

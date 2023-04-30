@@ -8,9 +8,11 @@ import com.hncboy.chatgpt.front.domain.request.RegisterFrontUserForEmailRequest;
 import com.hncboy.chatgpt.front.domain.vo.LoginInfoVO;
 import com.hncboy.chatgpt.front.domain.vo.RegisterCaptchaVO;
 import com.hncboy.chatgpt.front.domain.vo.UserInfoVO;
+import com.hncboy.chatgpt.front.service.FrontUserExtraWechatService;
 import com.hncboy.chatgpt.front.service.FrontUserService;
 import com.hncboy.chatgpt.front.service.strategy.user.AbstractRegisterTypeStrategy;
 import com.hncboy.chatgpt.front.util.FrontUserUtil;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,6 +23,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class FrontUserServiceImpl implements FrontUserService {
+    @Resource
+    private FrontUserExtraWechatService frontUserExtraWechatService;
 
     @Override
     public void register(RegisterFrontUserForEmailRequest request) {
@@ -43,7 +47,15 @@ public class FrontUserServiceImpl implements FrontUserService {
     @Override
     public UserInfoVO getUserInfo(FrontUserRegisterTypeEnum registerType, Integer extraInfoId) {
         AbstractRegisterTypeStrategy strategy = AbstractRegisterTypeStrategy.findStrategyByRegisterType(registerType);
-        return strategy.getLoginUserInfo(extraInfoId);
+        if (strategy != null) {
+            return strategy.getLoginUserInfo(extraInfoId);
+        }
+        switch (registerType) {
+            case WECHAT:
+                return frontUserExtraWechatService.getLoginUserInfo(extraInfoId);
+            default:
+                return null;
+        }
     }
 
     @Override

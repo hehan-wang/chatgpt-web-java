@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.hncboy.chatgpt.base.domain.entity.FrontUserBaseDO;
 import com.hncboy.chatgpt.base.domain.entity.FrontUserExtraBindingDO;
 import com.hncboy.chatgpt.base.domain.entity.FrontUserExtraEmailDO;
+import com.hncboy.chatgpt.base.domain.entity.FrontUserExtraWechatDO;
 import com.hncboy.chatgpt.base.enums.FrontUserRegisterTypeEnum;
 
 /**
@@ -20,6 +21,8 @@ public interface FrontUserExtraBindingService extends IService<FrontUserExtraBin
      * @param extraEmailDO 邮件扩展信息
      */
     void bindEmail(FrontUserBaseDO baseUser, FrontUserExtraEmailDO extraEmailDO);
+
+    void bindWechat(FrontUserBaseDO baseUser, FrontUserExtraWechatDO extraWechatDO);
 
     /**
      * 找到绑定关系

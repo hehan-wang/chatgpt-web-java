@@ -17,7 +17,8 @@ public enum UserExtraBindingTypeEnum {
     /**
      * 邮箱
      */
-    BIND_EMAIL("email", "邮箱绑定");
+    BIND_EMAIL("email", "邮箱绑定"),
+    BIND_WECHAT("wechat", "微信绑定");
 
     @EnumValue
     private final String code;

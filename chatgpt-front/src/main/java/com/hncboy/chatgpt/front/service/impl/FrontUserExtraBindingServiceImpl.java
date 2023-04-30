@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hncboy.chatgpt.base.domain.entity.FrontUserBaseDO;
 import com.hncboy.chatgpt.base.domain.entity.FrontUserExtraBindingDO;
 import com.hncboy.chatgpt.base.domain.entity.FrontUserExtraEmailDO;
+import com.hncboy.chatgpt.base.domain.entity.FrontUserExtraWechatDO;
 import com.hncboy.chatgpt.base.enums.FrontUserRegisterTypeEnum;
 import com.hncboy.chatgpt.base.enums.UserExtraBindingTypeEnum;
 import com.hncboy.chatgpt.base.mapper.FrontUserExtraBindingMapper;
@@ -28,6 +29,16 @@ public class FrontUserExtraBindingServiceImpl extends ServiceImpl<FrontUserExtra
         bindingDO.setBaseUserId(baseUser.getId());
         this.save(bindingDO);
     }
+
+    @Override
+    public void bindWechat(FrontUserBaseDO baseUser, FrontUserExtraWechatDO extraWechatDO) {
+        FrontUserExtraBindingDO bindingDO = new FrontUserExtraBindingDO();
+        bindingDO.setBindingType(UserExtraBindingTypeEnum.BIND_EMAIL);
+        bindingDO.setExtraInfoId(extraWechatDO.getId());
+        bindingDO.setBaseUserId(baseUser.getId());
+        this.save(bindingDO);
+    }
+
 
     @Override
     public FrontUserExtraBindingDO findExtraBinding(FrontUserRegisterTypeEnum registerType, Integer extraInfoId) {

@@ -26,6 +26,7 @@ public enum FrontUserRegisterTypeEnum {
      */
     EMAIL("email", "邮箱"),
 
+    WECHAT("wechat", "微信"),
     /**
      * 手机号注册
      */
