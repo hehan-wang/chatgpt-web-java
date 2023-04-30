@@ -12,7 +12,7 @@ spring:
 
 chat:
   # OpenAI API Key - https://platform.openai.com/overview
-  openai_api_key: ${CHAT_OPENAI_API_KEY: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 }
+  openai_api_key: ${CHAT_OPENAI_API_KEY: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}
   # change this to an `accessToken` extracted from the ChatGPT site's `https://chat.openai.com/api/auth/session` response
   openai_access_token: ${CHAT_OPENAI_ACCESS_TOKEN:}
   # OpenAI API Base URL - https://api.openai.com/，要加/后缀
@@ -24,9 +24,9 @@ chat:
   # 超时毫秒
   timeout_ms: ${CHAT_TIMEOUT_MS:100000}
   # HTTP 代理
-  http_proxy_host: ${CHAT_HTTP_PROXY_HOST:127.0.0.1}
+  http_proxy_host: ${CHAT_HTTP_PROXY_HOST:}
   # HTTP 代理
-  http_proxy_port: ${CHAT_HTTP_PROXY_PORT:7890}
+  http_proxy_port: ${CHAT_HTTP_PROXY_PORT:}
   # 管理端账号
   admin_account: ${CHAT_ADMIN_ACCOUNT:admin}
   # 管理端密码
@@ -45,15 +45,15 @@ chat:
 # 邮箱验证相关
 email:
   # SMTP服务器地址
-  host: ${EMAIL_HOST:xxxxxx}
+  host: ${EMAIL_HOST:smtp.qq.com}
   # 服务器一般默认 25 端口
-  port: ${EMAIL_PORT:25}
+  port: ${EMAIL_PORT:465}
   # 邮箱地址
-  from: ${EMAIL_FROM:xxxxxx}
+  from: ${EMAIL_FROM:524259885@qq.com}
   # 用户名，发件人前缀
-  user: ${EMAIL_USER:xxxxxx}
+  user: ${EMAIL_USER:524259885}
   # 如果要授权码，这里就是传授权码
-  pass: ${EMAIL_PASS:}
+  pass: ${EMAIL_PASS:rnwnbfvcxbzcbjaa}
   # 是否需要授权，决定是否要设置授权码
   auth: ${EMAIL_AUTH:true}
   # 邮箱验证码有效期（单位，分钟）

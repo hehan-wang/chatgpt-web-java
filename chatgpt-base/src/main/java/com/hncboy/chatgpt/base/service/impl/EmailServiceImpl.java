@@ -32,6 +32,7 @@ public class EmailServiceImpl implements EmailService {
         mailAccount.setUser(emailConfig.getUser());
         mailAccount.setAuth(emailConfig.getAuth());
         mailAccount.setDebug(true);
+        mailAccount.setStarttlsEnable(true);
         mailAccount.setSslEnable(true);
         mailAccount.setPass(emailConfig.getPass());
         log.info("初始化邮箱账号完毕，配置信息为：{} ", emailConfig);
@@ -40,18 +41,19 @@ public class EmailServiceImpl implements EmailService {
     @Override
     public void sendForVerifyCode(String targetEmail, String verifyCode) {
         String url = emailConfig.getVerificationRedirectUrl().concat(verifyCode);
-        String content = "点击下面的网址完成【StarGPT】账号的注册：" + url;
+        String content = "点击下面的网址完成【GPT】账号的注册：" + url;
 
         // 记录日志
         try {
             String sendMsgId = this.sendMessage(targetEmail, url);
             emailLogService.createSuccessLogBySysLog(sendMsgId, mailAccount.getFrom(), targetEmail, EmailBizTypeEnum.REGISTER_VERIFY, content);
         } catch (Exception e) {
+            log.error("发送邮件失败，错误信息为：", e);
             emailLogService.createFailedLogBySysLog("", mailAccount.getFrom(), targetEmail, EmailBizTypeEnum.REGISTER_VERIFY, content, e.getMessage());
         }
     }
 
     protected String sendMessage(String targetEmail, String content) {
-        return MailUtil.send(mailAccount, targetEmail, "【StarGPT】账号注册", content, false);
+        return MailUtil.send(mailAccount, targetEmail, "【GPT】账号注册", content, false);
     }
 }
