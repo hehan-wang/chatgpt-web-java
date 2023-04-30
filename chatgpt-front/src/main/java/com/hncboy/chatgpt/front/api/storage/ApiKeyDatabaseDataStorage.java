@@ -9,7 +9,7 @@ import java.util.UUID;
 
 /**
  * @author hncboy
- * @date 2023/3/25 22:52
+ * @date 2023-3-25
  * ApiKey 数据库数据存储
  */
 @Component
@@ -43,21 +43,17 @@ public class ApiKeyDatabaseDataStorage extends AbstractDatabaseDataStorage {
         ChatMessageDO questionChatMessageDO = chatMessageStorage.getQuestionChatMessageDO();
         String modelName = questionChatMessageDO.getModelName();
 
-        // 获取问题消耗的 tokens
-        int promptTokens = TikTokensUtil.tokens(modelName, questionChatMessageDO.getContent());
-
         // 获取回答消耗的 tokens
         ChatMessageDO answerChatMessageDO = chatMessageStorage.getAnswerChatMessageDO();
         String answerContent = answerChatMessageDO.getContent();
         int completionTokens = StrUtil.isEmpty(answerContent) ? 0 : TikTokensUtil.tokens(modelName, answerContent);
 
         // 填充使用情况
-        int totalTokens = promptTokens + completionTokens;
-        answerChatMessageDO.setPromptTokens(promptTokens);
+        int totalTokens = questionChatMessageDO.getPromptTokens() + completionTokens;
+        answerChatMessageDO.setPromptTokens(questionChatMessageDO.getPromptTokens());
         answerChatMessageDO.setCompletionTokens(completionTokens);
         answerChatMessageDO.setTotalTokens(totalTokens);
 
-        questionChatMessageDO.setPromptTokens(promptTokens);
         questionChatMessageDO.setCompletionTokens(completionTokens);
         questionChatMessageDO.setTotalTokens(totalTokens);
     }

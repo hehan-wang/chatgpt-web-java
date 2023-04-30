@@ -2,27 +2,22 @@ package com.hncboy.chatgpt.base.exception;
 
 import cn.dev33.satoken.exception.NotLoginException;
 import cn.hutool.core.collection.CollectionUtil;
-import cn.hutool.json.JSONObject;
-import com.hncboy.chatgpt.base.handler.response.IResultCode;
 import com.hncboy.chatgpt.base.handler.response.R;
 import com.hncboy.chatgpt.base.handler.response.ResultCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import retrofit2.adapter.rxjava2.Result;
 
-import java.security.SecureRandom;
 import java.util.List;
 
 /**
  * @author hncboy
- * @date 2023/3/23 10:55
+ * @date 2023-3-23
  * 异常处理器
  */
 @Slf4j
@@ -42,7 +37,7 @@ public class RestExceptionTranslator {
     public R<Void> handleError(NotLoginException e) {
         log.warn("鉴权拦截", e);
         // 判断场景值，定制化异常信息
-        String message = "";
+        String message;
         if (e.getType().equals(NotLoginException.NOT_TOKEN)) {
             message = "未提供 token";
         } else if (e.getType().equals(NotLoginException.INVALID_TOKEN)) {

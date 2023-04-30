@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * @author hncboy
- * @date 2023/3/28 12:48
+ * @date 2023-3-28
  * SaToken 配置，目前针对管理端鉴权
  */
 @Configuration
@@ -37,7 +37,10 @@ public class SaTokenConfig implements WebMvcConfigurer {
                 // 放行用户端图形验证码
                 .excludePathPatterns("/user/get_pic_code")
                 // 放行用户端邮箱登录
-                .excludePathPatterns("/user/login/email");
+                .excludePathPatterns("/user/login/email")
+                // swagger 放行
+                .excludePathPatterns("/swagger-ui/**")
+                .excludePathPatterns("/v3/api-docs/**");
     }
 
     @Bean

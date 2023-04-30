@@ -1,7 +1,5 @@
 # chatgpt-web-java
 
-中文版 | [English](README-EN.md)
-
 # 介绍
 
 - ChatGPT 说文解字前端的 Java 后台
@@ -42,7 +40,7 @@
 
 # 功能
 
-## 已实现功能
+## 已实现
 
 ### 上下文聊天
 
@@ -66,14 +64,15 @@
 
 ![](pics/rate_limit_test.png)
 
-## 待实现功能
+### 登录注册
 
-- GPT 接口异常信息特定封装返回，
-- 其他没发现的点
+通过邮箱进行登录注册
 
-## 存在问题
+![](pics/register_1.png)
 
-- 在接口返回报错信息时，不会携带 conversationid 和 parentMessageId，导致前端下一次发送消息时会丢失这两个字段，丢失上下文关系。
+## 待实现
+
+- 目前聊天长度受上下文限制，后期调整为动态的控制上下文。
 
 # 管理端
 
@@ -168,9 +167,15 @@
 表结构路径：`chatgpt-bootstrap/src/main/resources/db`。 不需要额外数据库的可以自行连接  H2 地址，改下连接方式就可以。
 
 
-- 聊天室表
-- 聊天记录表
-- 敏感词表
+- chat_message 聊天室表
+- chat_room 聊天记录表
+- email_verify_code 邮件验证码表
+- front_user_base 前端基础用户表
+- front_user_extra_binding 前端基础用户扩展绑定表
+- front_user_extra_email 前端基础用户邮箱扩展
+- sensitive_word 敏感词表
+- sys_email_send_log 邮件发送日志表
+- sys_front_user_login_log 前端用户登录日志表
 
 # 风险声明
 
@@ -181,6 +186,12 @@
 - 非常感谢大家对我们项目和开发工作的支持和认可。我们深知在开源软件开发过程中，用户和社区的反馈和支持是至关重要的。我们的项目代码已经提供了 README 和 issue，方便用户进行部署和解决问题，同时也可以促进我们项目的活跃度，会优先关注 issue 的问题。
 - 然而，对于一些用户可能存在需要二次开发或部署方面的困难，我们在开发任务繁忙的情况下，难以抽出时间回答所有用户的问题，但我们会尽最大努力去回答用户的问题。同时，我们也可以提供付费的解答服务，为用户提供更多的支持。
 - 我们的开发工作也在持续进行中，我们会不断迭代优化我们的技术设计方案和业务功能，项目不仅仅会提供所需的业务功能，也可以通过项目来学习一些技术的使用。如果您认为我们的开源项目有价值能帮助到您，并愿意支持我们的开发工作，可以为项目点个小星星或者请作者[喝一杯可乐发电](https://afdian.net/a/stargpt) 。我们将非常感谢。
+
+# 参与贡献
+
+- 代码规范：[阿里巴巴 Java 开发手册](https://github.com/alibaba/p3c/blob/master/Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C(%E9%BB%84%E5%B1%B1%E7%89%88).pdf)
+- 注释规范：[中文技术文档的写作规范](https://github.com/ruanyf/document-style-guide)
+- Git Commit Message：[conventional-changelog 标准](https://www.conventionalcommits.org/en/v1.0.0/)
 
 # 联系方式
 
