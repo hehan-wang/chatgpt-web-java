@@ -23,7 +23,7 @@ public class BaseGeneratorTest {
      */
     protected static void initDataSource(DataSourceConfig dataSourceConfig) throws SQLException {
         Connection conn = dataSourceConfig.getConn();
-        InputStream inputStream = H2CodeGeneratorTest.class.getResourceAsStream("/db/schema-mysql.sql");
+        InputStream inputStream = BaseGeneratorTest.class.getResourceAsStream("/db/schema-mysql.sql");
         ScriptRunner scriptRunner = new ScriptRunner(conn);
         scriptRunner.setAutoCommit(true);
         scriptRunner.runScript(new InputStreamReader(inputStream));

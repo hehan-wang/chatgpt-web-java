@@ -4,7 +4,6 @@ import cn.hutool.json.JSONUtil;
 import com.hncboy.chatgpt.base.domain.entity.FrontUserExtraWechatDO;
 import com.hncboy.chatgpt.base.handler.response.R;
 import com.hncboy.chatgpt.front.domain.vo.LoginInfoVO;
-import com.hncboy.chatgpt.front.service.FrontUserService;
 import com.hncboy.chatgpt.front.service.FrontUserExtraWechatService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -18,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * 前端用户控制器
+ * 前端oauth回调控制器
  *
- * @author CoDeleven
+ * @author david
  */
 @Slf4j
 @AllArgsConstructor
@@ -47,7 +46,7 @@ public class OauthController {
         //2.没注册的话先注册,否则跳过直接登录
         FrontUserExtraWechatDO wechatDO = wechatService.register(openid);
         //3.登陆
-        LoginInfoVO res = wechatService.login(wechatDO);
+        LoginInfoVO res = wechatService.login(wechatDO, state);
         return R.data(res);
     }
 }

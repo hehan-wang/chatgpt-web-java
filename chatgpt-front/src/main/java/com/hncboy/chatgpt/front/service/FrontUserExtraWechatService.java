@@ -49,7 +49,7 @@ public class FrontUserExtraWechatService extends ServiceImpl<FrontUserExtraWecha
         return wechatDO;
     }
 
-    public LoginInfoVO login(FrontUserExtraWechatDO wechatDO) {
+    public LoginInfoVO login(FrontUserExtraWechatDO wechatDO, String state) {
         //获取用户信息
         UserInfoVO userInfo = this.getLoginUserInfo(wechatDO);
 
