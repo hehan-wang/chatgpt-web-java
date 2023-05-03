@@ -1,7 +1,6 @@
 package com.hncboy.chatgpt.front.controller;
 
 import com.hncboy.chatgpt.base.handler.response.R;
-import com.hncboy.chatgpt.front.domain.vo.LoginInfoVO;
 import com.hncboy.chatgpt.front.domain.vo.OrderVO;
 import com.hncboy.chatgpt.front.service.OrderService;
 import com.hncboy.chatgpt.front.util.FrontUserUtil;

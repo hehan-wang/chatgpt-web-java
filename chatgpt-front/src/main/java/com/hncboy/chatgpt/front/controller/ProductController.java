@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 前端订单控制器
@@ -29,7 +30,9 @@ public class ProductController {
     @Operation(summary = "列表接口")
     @GetMapping("/all")
     public R<List<ProductDO>> list() {
-        List<ProductDO> list = productService.list();
+        List<ProductDO> list = productService.list().stream()
+                .filter(e -> e.getPrice().doubleValue() > 0)
+                .collect(Collectors.toList());
         return R.data(list);
     }
 }
